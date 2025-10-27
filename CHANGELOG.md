@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.1.2...v0.2.0) (2025-10-27)
+
+
+### Features
+
+* Add more output to Complete-GroupWritebackReconciliation ([014a3d2](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/014a3d2a0bc199473a8d688e2bd2f635640a14b2))
+
 ## [0.1.2](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.1.1...v0.1.2) (2025-10-27)
 
 
