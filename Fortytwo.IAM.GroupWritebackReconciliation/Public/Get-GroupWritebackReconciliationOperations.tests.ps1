@@ -25,7 +25,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                         "CN=John M. Doe,OU=Users,DC=example,DC=com",
                         "CN=John Smith,OU=Users,DC=example,DC=com"
                     )
-                    AdminDescription  = "takenover_bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
+                    AdminDescription  = "TakenOver_Group_bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
                     ObjectGUID        = "1404be73-01c6-4801-9fce-4ad11a7284a3"
                 }
                 
@@ -36,7 +36,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     Member            = @(
                         "CN=John Smith,OU=Users,DC=example,DC=com"
                     )
-                    AdminDescription  = "takenover_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+                    AdminDescription  = "TakenOver_Group_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
                     ObjectGUID        = "bce7f444-fc13-4755-b877-608cf5e635a2"
                 }
                 
@@ -45,7 +45,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     DistinguishedName = "CN=Group 3,DC=example,DC=com"
                     Name              = "Group 3"
                     Member            = @()
-                    AdminDescription  = "takenover_cccccccc-dddd-eeee-ffff-000000000000"
+                    AdminDescription  = "TakenOver_Group_cccccccc-dddd-eeee-ffff-000000000000"
                     ObjectGUID        = "d4f5e6a7-b8c9-40d1-92e3-4567890abcde"
                 }
                 
@@ -56,7 +56,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     Member            = @(
                         "CN=John Smith,OU=Users,DC=example,DC=com"
                     )
-                    AdminDescription  = "takenover_dddddddd-eeee-ffff-0000-111111111111"
+                    AdminDescription  = "TakenOver_Group_dddddddd-eeee-ffff-0000-111111111111"
                     ObjectGUID        = "e5f6a7b8-c9d0-41e2-93f4-567890abcdef"
                 }
             )

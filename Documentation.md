@@ -150,7 +150,7 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: { adminDescription -like "takenover_*" }
+Default value: { adminDescription -like "TakenOver_Group_*" }
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

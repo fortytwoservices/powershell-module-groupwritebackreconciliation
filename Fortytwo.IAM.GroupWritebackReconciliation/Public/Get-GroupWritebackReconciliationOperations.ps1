@@ -17,12 +17,12 @@ function Get-GroupWritebackReconciliationOperations {
         foreach ($ADGroup in $ADGroups) {
             Write-Verbose "Processing group '$($ADGroup.Name)' with objectguid '$($ADGroup.ObjectGUID)'."
             
-            if ($ADGroup.adminDescription -notmatch "^takenover_[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$") {
+            if ($ADGroup.adminDescription -notmatch "^TakenOver_Group_[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$") {
                 Write-Warning "Group '$($ADGroup.Name)' does not have a valid adminDescription. Skipping group."
                 continue
             }
 
-            $EntraIDGroupObjectId = $ADGroup.adminDescription -replace "^takenover_"
+            $EntraIDGroupObjectId = $ADGroup.adminDescription -replace "^TakenOver_Group_"
 
             Write-Verbose " - Fetching Entra ID group members for group '$EntraIDGroupObjectId'."
             $EntraIDMembers = @{}
