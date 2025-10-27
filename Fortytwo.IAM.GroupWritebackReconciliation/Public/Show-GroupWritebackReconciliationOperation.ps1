@@ -13,14 +13,20 @@ function Show-GroupWritebackReconciliationOperation {
         [Parameter(ValueFromPipeline = $true)]
         $Operation,
 
-        [Parameter()]
+        [Parameter(Mandatory = $false)]
         [Switch] $Single
     )
 
     Begin {
         if (!$Single.IsPresent) {
             $Script:PreviousGroup = $null
-            Write-Host "[group]Operations report"
+            if ($env:TF_BUILD -eq "True") {
+                Write-Host "[group]Operations report"
+            } elseif($env:GITHUB_ACTIONS -eq "true") {
+                Write-Host "::group::Operations report"
+            } else {
+                Write-Host "Operations report:"
+            }
         }
 
         $Methods = [ordered] @{
@@ -53,7 +59,11 @@ function Show-GroupWritebackReconciliationOperation {
 
     End {
         if (!$Single.IsPresent) {
-            Write-Host "[endgroup]"
+            if ($env:TF_BUILD -eq "True") {
+                Write-Host "[endgroup]"
+            } elseif($env:GITHUB_ACTIONS -eq "true") {
+                Write-Host "::endgroup::"
+            }
         
             Write-Host "Operations summary:"
             $Methods.GetEnumerator() | ForEach-Object {
