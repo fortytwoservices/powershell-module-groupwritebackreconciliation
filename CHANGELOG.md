@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.1.1...v0.1.2) (2025-10-27)
+
+
+### Bug Fixes
+
+* Adjust adminDescription prefix ([43faf37](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/43faf37b4ec756ac11f3e02f73f281f511bebada))
+
 ## [0.1.1](https://github.com/fortytwoservices/powershell-module-groupwritebackconsolidation/compare/v0.1.0...v0.1.1) (2025-10-27)
 
 
