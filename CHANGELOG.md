@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.2](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.4.1...v0.4.2) (2025-10-27)
+
+
+### Bug Fixes
+
+* Wrong check for access token type ([65dee57](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/65dee573f86ca6ba10ab7ec623f07148eaa4a2d4))
+* Wrong check for access token type ([c02a347](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/c02a347ed2bd97a5e91c5617b3cdcc492c739e8d))
+
 ## [0.4.1](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.4.0...v0.4.1) (2025-10-27)
 
 
