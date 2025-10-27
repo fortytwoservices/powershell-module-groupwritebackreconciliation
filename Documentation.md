@@ -4,7 +4,7 @@ A module for group writeback consolidation in Entra ID.
 
 | Metadata | Information |
 | --- | --- |
-| Version | 0.1.0 |
+| Version | 0.1.1 |
 | Required modules | EntraIDAccessToken |
 | Author | Marius Solbakken Mellum |
 | Company name | Fortytwo Technologies AS |
@@ -150,7 +150,7 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: { adminDescription -like "takenover_*" }
+Default value: { adminDescription -like "TakenOver_Group_*" }
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

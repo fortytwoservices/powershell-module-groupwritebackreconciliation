@@ -32,7 +32,7 @@ Connect-GroupWritebackReconciliation
 Add-EntraIDInteractiveUserAccessTokenProfile -Name "test"
 Connect-GroupWritebackReconciliation `
     -AccessTokenProfile "test" `
-    -ADGroupFilter { adminDescription -like "takenover_*" }
+    -ADGroupFilter { adminDescription -like "TakenOver_Group_*" }
 ```
 
 ### Get and show operations
