@@ -126,7 +126,7 @@ Describe "Get-GroupWritebackConsolidationOperations" -Tag Mocked {
 
     It "Should have a planned operation to add two members to Group 3" {
         $Operation = $Operations | Where-Object Action -eq "Add member" | Where-Object Group -eq "CN=Group 3,DC=example,DC=com"
-        $Operation.Member | Should -Be @(
+        $Operation.Member | Sort-Object | Should -Be @(
             "CN=John M. Doe,OU=Users,DC=example,DC=com",
             "CN=John Smith,OU=Users,DC=example,DC=com"
         )
