@@ -1,16 +1,16 @@
-# Documentation for module Fortytwo.IAM.GroupWritebackConsolidation
+# Documentation for module Fortytwo.IAM.GroupWritebackReconciliation
 
 A module for group writeback consolidation in Entra ID.
 
 | Metadata | Information |
 | --- | --- |
-| Version | 0.0.1 |
+| Version | 0.1.0 |
 | Required modules | EntraIDAccessToken |
 | Author | Marius Solbakken Mellum |
 | Company name | Fortytwo Technologies AS |
 | PowerShell version | 7.2 |
 
-## Complete-GroupWritebackConsolidation
+## Complete-GroupWritebackReconciliation
 
 ### SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -18,7 +18,7 @@ A module for group writeback consolidation in Entra ID.
 ### SYNTAX
 
 ```
-Complete-GroupWritebackConsolidation [[-Operation] <Object>] [-ProgressAction <ActionPreference>]
+Complete-GroupWritebackReconciliation [[-Operation] <Object>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -78,33 +78,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### NOTES
 
 ### RELATED LINKS
-## Connect-GroupWritebackConsolidation
+## Connect-GroupWritebackReconciliation
 
 ### SYNOPSIS
-Connects the Connect-GroupWritebackConsolidation module to Entra ID and Active Directory.
+Connects the Connect-GroupWritebackReconciliation module to Entra ID and Active Directory.
 
 ### SYNTAX
 
 ```
-Connect-GroupWritebackConsolidation [[-AccessTokenProfile] <String>] [-SkipAllTests]
+Connect-GroupWritebackReconciliation [[-AccessTokenProfile] <String>] [-SkipAllTests]
  [[-ADGroupFilter] <ScriptBlock>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DESCRIPTION
-Connects the Connect-GroupWritebackConsolidation module to Entra ID and Active Directory.
+Connects the Connect-GroupWritebackReconciliation module to Entra ID and Active Directory.
 
 ### EXAMPLES
 
 #### EXAMPLE 1
 ```
-Install-Module Fortytwo.IAM.GroupWritebackConsolidation -Scope CurrentUser
+Install-Module Fortytwo.IAM.GroupWritebackReconciliation -Scope CurrentUser
 ```
 
 Add-EntraIDClientSecretAccessTokenProfile \`
     -TenantId "bb73082a-b74c-4d39-aec0-41c77d6f4850" \`
     -ClientId "78f07963-ce55-4b23-b56a-2e13f2036d7f"
 
-Connect-GroupWritebackConsolidation
+Connect-GroupWritebackReconciliation
 
 ### PARAMETERS
 
@@ -180,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### NOTES
 
 ### RELATED LINKS
-## Get-GroupWritebackConsolidationOperations
+## Get-GroupWritebackReconciliationOperations
 
 ### SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -188,7 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### SYNTAX
 
 ```
-Get-GroupWritebackConsolidationOperations [-DoNotWarnIfMissingOnPremDN] [-ProgressAction <ActionPreference>]
+Get-GroupWritebackReconciliationOperations [-DoNotWarnIfMissingOnPremDN] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -248,7 +248,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### NOTES
 
 ### RELATED LINKS
-## Show-GroupWritebackConsolidationOperation
+## Show-GroupWritebackReconciliationOperation
 
 ### SYNOPSIS
 Prints all planned operations to screen
@@ -256,7 +256,7 @@ Prints all planned operations to screen
 ### SYNTAX
 
 ```
-Show-GroupWritebackConsolidationOperation [[-Operation] <Object>] [-Single]
+Show-GroupWritebackReconciliationOperation [[-Operation] <Object>] [-Single]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -267,7 +267,7 @@ Show-GroupWritebackConsolidationOperation [[-Operation] <Object>] [-Single]
 
 #### EXAMPLE 1
 ```
-$Operations | Show-GroupWritebackConsolidationOperation
+$Operations | Show-GroupWritebackReconciliationOperation
 ```
 
 ### PARAMETERS

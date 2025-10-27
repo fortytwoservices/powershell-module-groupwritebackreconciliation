@@ -1,4 +1,4 @@
-function Complete-GroupWritebackConsolidation {
+function Complete-GroupWritebackReconciliation {
     [CmdletBinding()]
 
     Param(

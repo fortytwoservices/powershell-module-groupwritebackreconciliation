@@ -1,11 +1,11 @@
 #
-# Module manifest for module 'Fortytwo.IAM.GroupWritebackConsolidation'
+# Module manifest for module 'Fortytwo.IAM.GroupWritebackReconciliation'
 #
 
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule        = 'Fortytwo.IAM.GroupWritebackConsolidation.psm1'
+    RootModule        = 'Fortytwo.IAM.GroupWritebackReconciliation.psm1'
 
     # Version number of this module.
     ModuleVersion = '0.1.0'
@@ -68,7 +68,7 @@
     FunctionsToExport = '*'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = @('Complete-GroupWritebackConsolidation','Connect-GroupWritebackConsolidation','Get-GroupWritebackConsolidationOperations','Show-GroupWritebackConsolidationOperation')
+    CmdletsToExport = @('Complete-GroupWritebackReconciliation','Connect-GroupWritebackReconciliation','Get-GroupWritebackReconciliationOperations','Show-GroupWritebackReconciliationOperation')
 
     # Variables to export from this module
     VariablesToExport = '*'
@@ -88,7 +88,7 @@
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData       = @{
         Tags       = @('PSEdition_Core', 'Microsoft365', 'EntraID')
-        ProjectUri = "https://github.com/fortytwoservices/powershell-module-groupwritebackconsolidation"
+        ProjectUri = "https://github.com/fortytwoservices/powershell-module-GroupWritebackReconciliation"
     }
 
 }

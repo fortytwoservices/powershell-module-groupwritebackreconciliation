@@ -1,20 +1,20 @@
 <#
 .DESCRIPTION
-    Connects the Connect-GroupWritebackConsolidation module to Entra ID and Active Directory.
+    Connects the Connect-GroupWritebackReconciliation module to Entra ID and Active Directory.
 
 .SYNOPSIS
-    Connects the Connect-GroupWritebackConsolidation module to Entra ID and Active Directory.
+    Connects the Connect-GroupWritebackReconciliation module to Entra ID and Active Directory.
 
 .EXAMPLE
-    Install-Module Fortytwo.IAM.GroupWritebackConsolidation -Scope CurrentUser
+    Install-Module Fortytwo.IAM.GroupWritebackReconciliation -Scope CurrentUser
 
     Add-EntraIDClientSecretAccessTokenProfile `
         -TenantId "bb73082a-b74c-4d39-aec0-41c77d6f4850" `
         -ClientId "78f07963-ce55-4b23-b56a-2e13f2036d7f"
 
-    Connect-GroupWritebackConsolidation
+    Connect-GroupWritebackReconciliation
 #>
-function Connect-GroupWritebackConsolidation {
+function Connect-GroupWritebackReconciliation {
     [CmdletBinding()]
 
     Param(
