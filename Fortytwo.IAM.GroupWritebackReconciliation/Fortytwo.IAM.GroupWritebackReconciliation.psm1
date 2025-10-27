@@ -2,6 +2,7 @@
 
 New-Variable -Scope Script -Name AccessTokenProfile -Value "default"
 New-Variable -Scope Script -Name ADGroupFilter -Value $null
+New-Variable -Scope Script -Name PreviousGroup -Value $null
 
 # Get public and private function definition files.
 $Private = (Test-Path $PSScriptRoot\Private) ? @( Get-ChildItem -Path $PSScriptRoot\Private\*.ps1 -ErrorAction SilentlyContinue ) : @()
