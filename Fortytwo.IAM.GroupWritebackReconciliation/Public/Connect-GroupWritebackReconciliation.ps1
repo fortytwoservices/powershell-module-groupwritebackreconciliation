@@ -38,7 +38,7 @@ function Connect-GroupWritebackReconciliation {
             return
         }
 
-        if ((Get-EntraIDAccessToken | Get-EntraIDAccessTokenType -eq "user")) {
+        if ((Get-EntraIDAccessToken | Get-EntraIDAccessTokenType) -eq "user") {
             if (!(Get-EntraIDAccessToken | Get-EntraIDAccessTokenHasScopes -Scopes "groupmember.read.all", "groupmember.readwrite.all", "group.read.all", "group.readwrite.all" -Any)) {
                 Write-Warning "⚠️ The user/delegated access token profile '$AccessTokenProfile' does not have any of the required scopes of: 'groupmember.read.all', 'groupmember.readwrite.all', 'group.read.all', 'group.readwrite.all'. Please ensure the profile is correct and has the necessary permissions."
             }
