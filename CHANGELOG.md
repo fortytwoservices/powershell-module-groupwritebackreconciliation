@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.4.0...v0.4.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* Handle user access tokens with different check (scopes instead of roles) ([6078092](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/6078092ea112f6daef17dda546b0546832726f1e))
+* Handle user access tokens with different check (scopes instead of roles) ([d0f6b46](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/d0f6b4633008831c8fbb0cf993d17fde066f0d42))
+
 ## [0.4.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.3.0...v0.4.0) (2025-10-27)
 
 
