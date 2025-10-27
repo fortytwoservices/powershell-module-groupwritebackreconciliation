@@ -1,6 +1,6 @@
 # Documentation for module Fortytwo.IAM.GroupWritebackReconciliation
 
-A module for colsolidating AD groups with Entra ID in a write-back scenario.
+A module for reconciling AD groups with Entra ID in a write-back scenario. Entra ID only managed group memberships when they actually transition in Entra ID, meaning that if there are members in AD that have been manually added outside of Entra ID, Entra ID will not removed them. This module comes to the rescue!
 
 ## Installation
 
