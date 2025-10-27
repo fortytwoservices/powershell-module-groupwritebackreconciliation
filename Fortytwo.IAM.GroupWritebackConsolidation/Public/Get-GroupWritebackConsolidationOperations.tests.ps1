@@ -105,7 +105,7 @@ Describe "Get-GroupWritebackConsolidationOperations" -Tag Mocked {
             throw [Microsoft.PowerShell.Commands.HttpResponseException]::new("Not found", [System.Net.Http.HttpResponseMessage]::new(404))
         }
 
-        $Operations = Get-GroupWritebackConsolidationOperations -Verbose -Debug
+        $Operations = Get-GroupWritebackConsolidationOperations -Verbose -Debug -ErrorAction Continue
         # $Operations | ConvertTo-Json | Write-Host -ForegroundColor Yellow
     }
 
