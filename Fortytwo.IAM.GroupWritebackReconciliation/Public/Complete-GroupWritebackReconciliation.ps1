@@ -3,16 +3,25 @@ function Complete-GroupWritebackReconciliation {
 
     Param(
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
-        $Operation
+        $Operation,
+
+        [Parameter(Mandatory = $false)]
+        [Switch] $Silent
     )
 
     Process {
         if ($Operation.Action -eq "Add member") {
-            $Operation | Show-GroupWritebackReconciliationOperation -Single
+            Write-Debug "Adding member '$($Operation.Member)' to group '$($Operation.Group)'."
+            if (!$Silent.IsPresent) {
+                $Operation | Show-GroupWritebackReconciliationOperation -Single
+            }
             Add-ADGroupMember -Identity $Operation.Group -Members $Operation.Member
         }
         elseif ($Operation.Action -eq "Remove member") {
-            $Operation | Show-GroupWritebackReconciliationOperation -Single
+            Write-Debug "Removing member '$($Operation.Member)' from group '$($Operation.Group)'."
+            if (!$Silent.IsPresent) {
+                $Operation | Show-GroupWritebackReconciliationOperation -Single
+            }
             Remove-ADGroupMember -Identity $Operation.Group -Members $Operation.Member -Confirm:$false
         }
         else {
