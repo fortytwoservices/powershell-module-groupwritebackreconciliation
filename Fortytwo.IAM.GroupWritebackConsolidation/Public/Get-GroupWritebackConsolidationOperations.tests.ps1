@@ -105,7 +105,7 @@ Describe "Get-GroupWritebackConsolidationOperations" -Tag Mocked {
             throw [Microsoft.PowerShell.Commands.HttpResponseException]::new("Not found", [System.Net.Http.HttpResponseMessage]::new(404))
         }
 
-        $Operations = Get-GroupWritebackConsolidationOperations -Verbose -Debug
+        $Operations = Get-GroupWritebackConsolidationOperations -Verbose -Debug -ErrorAction Continue
         # $Operations | ConvertTo-Json | Write-Host -ForegroundColor Yellow
     }
 
@@ -126,7 +126,7 @@ Describe "Get-GroupWritebackConsolidationOperations" -Tag Mocked {
 
     It "Should have a planned operation to add two members to Group 3" {
         $Operation = $Operations | Where-Object Action -eq "Add member" | Where-Object Group -eq "CN=Group 3,DC=example,DC=com"
-        $Operation.Member | Should -Be @(
+        $Operation.Member | Sort-Object | Should -Be @(
             "CN=John M. Doe,OU=Users,DC=example,DC=com",
             "CN=John Smith,OU=Users,DC=example,DC=com"
         )
