@@ -3,9 +3,9 @@
 Prints all planned operations to screen
 
 .EXAMPLE
-$Operations | Show-GroupWritebackConsolidationOperation
+$Operations | Show-GroupWritebackReconciliationOperation
 #>
-function Show-GroupWritebackConsolidationOperation {
+function Show-GroupWritebackReconciliationOperation {
     [CmdletBinding(SupportsShouldProcess = $true)]
 
     Param(

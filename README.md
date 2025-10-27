@@ -1,4 +1,4 @@
-# Documentation for module Fortytwo.IAM.GroupWritebackConsolidation
+# Documentation for module Fortytwo.IAM.GroupWritebackReconciliation
 
 A module for colsolidating AD groups with Entra ID in a write-back scenario.
 
@@ -7,41 +7,41 @@ A module for colsolidating AD groups with Entra ID in a write-back scenario.
 The module is published to the PowerShell gallery:
 
 ```PowerShell
-Install-Module -Scope CurrentUser -Name Fortytwo.IAM.GroupWritebackConsolidation
+Install-Module -Scope CurrentUser -Name Fortytwo.IAM.GroupWritebackReconciliation
 ```
 
 ## General
 
 The module is invoked in three steps:
 
-- Connect ([```Connect-GroupWritebackConsolidation```](Documentation.md#connect-groupwritebackconsolidation)) the module to Entra ID, which is using the [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken) module.
-- Get required operations ([```Get-GroupWritebackConsolidationOperations```](Documentation.md#get-groupwritebackconsolidationoperations)), which will return a list of operations that must be completed in order for your AD groups to have the same members as in Entra ID.
-- Complete the operations using ([```Complete-GroupWritebackConsolidation```](Documentation.md#complete-groupwritebackconsolidation))
+- Connect ([```Connect-GroupWritebackReconciliation```](Documentation.md#connect-GroupWritebackReconciliation)) the module to Entra ID, which is using the [EntraIDAccessToken](https://www.powershellgallery.com/packages/EntraIDAccessToken) module.
+- Get required operations ([```Get-GroupWritebackReconciliationOperations```](Documentation.md#get-GroupWritebackReconciliationoperations)), which will return a list of operations that must be completed in order for your AD groups to have the same members as in Entra ID.
+- Complete the operations using ([```Complete-GroupWritebackReconciliation```](Documentation.md#complete-GroupWritebackReconciliation))
 
 ## Examples
 
 ### Connect
 
-The [```Connect-GroupWritebackConsolidation```](Documentation.md#connect-groupwritebackconsolidation) cmdlet is used to tell the module how to connect to Entra ID, and how to locate AD groups.
+The [```Connect-GroupWritebackReconciliation```](Documentation.md#connect-GroupWritebackReconciliation) cmdlet is used to tell the module how to connect to Entra ID, and how to locate AD groups.
 
 ```PowerShell
-Connect-GroupWritebackConsolidation
+Connect-GroupWritebackReconciliation
 ```
 
 ```PowerShell
 Add-EntraIDInteractiveUserAccessTokenProfile -Name "test"
-Connect-GroupWritebackConsolidation `
+Connect-GroupWritebackReconciliation `
     -AccessTokenProfile "test" `
     -ADGroupFilter { adminDescription -like "takenover_*" }
 ```
 
 ### Get and show operations
 
-The [```Get-GroupWritebackConsolidationOperations```](Documentation.md#get-groupwritebackconsolidationoperations) cmdlet is used to calculate the required operations in Entra ID and Active Directory.
+The [```Get-GroupWritebackReconciliationOperations```](Documentation.md#get-GroupWritebackReconciliationoperations) cmdlet is used to calculate the required operations in Entra ID and Active Directory.
 
 ```PowerShell
-$Operations = Get-GroupWritebackConsolidationOperations -Verbose
-$Operations | Show-GroupWritebackConsolidationOperation
+$Operations = Get-GroupWritebackReconciliationOperations -Verbose
+$Operations | Show-GroupWritebackReconciliationOperation
 ```
 
 ### Complete operations
@@ -49,7 +49,7 @@ $Operations | Show-GroupWritebackConsolidationOperation
 The last step is to actually complete the operations into AD.
 
 ```PowerShell
-$Operations | Complete-GroupWritebackConsolidation
+$Operations | Complete-GroupWritebackReconciliation
 ```
 
 ### Complete examples

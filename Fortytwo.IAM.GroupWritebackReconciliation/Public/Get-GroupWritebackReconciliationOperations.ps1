@@ -1,4 +1,4 @@
-function Get-GroupWritebackConsolidationOperations {
+function Get-GroupWritebackReconciliationOperations {
     [CmdletBinding()]
 
     Param(
@@ -64,7 +64,7 @@ function Get-GroupWritebackConsolidationOperations {
                 $EntraIDMembers.Keys | 
                 Where-Object { -not $ADGroupMemberMap.ContainsKey($_) } |
                 ForEach-Object {
-                    New-GroupWritebackConsolidationOperation -Action "Add member" -Group $ADGroup.DistinguishedName -Member $_
+                    New-GroupWritebackReconciliationOperation -Action "Add member" -Group $ADGroup.DistinguishedName -Member $_
                 }
             } else {
                 Write-Warning "No members found in Entra ID group '$EntraIDGroupObjectId'."
@@ -75,7 +75,7 @@ function Get-GroupWritebackConsolidationOperations {
                 $ADGroupMemberMap.Keys |
                 Where-Object { -not $EntraIDMembers.ContainsKey($_) } |
                 ForEach-Object {
-                    New-GroupWritebackConsolidationOperation -Action "Remove member" -Group $ADGroup.DistinguishedName -Member $_
+                    New-GroupWritebackReconciliationOperation -Action "Remove member" -Group $ADGroup.DistinguishedName -Member $_
                 }
             }
         }

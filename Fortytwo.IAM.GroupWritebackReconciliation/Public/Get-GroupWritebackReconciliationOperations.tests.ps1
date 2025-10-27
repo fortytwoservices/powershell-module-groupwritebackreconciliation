@@ -10,9 +10,9 @@ BeforeAll {
     $MockupModule | Import-Module -Global
 }
 
-Describe "Get-GroupWritebackConsolidationOperations" -Tag Mocked {
+Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
     BeforeAll {
-        Connect-GroupWritebackConsolidation -SkipAllTests
+        Connect-GroupWritebackReconciliation -SkipAllTests
 
         # Mocking dependencies
         Mock -ModuleName $Script:Module.Name -CommandName Get-ADGroup -MockWith {
@@ -105,7 +105,7 @@ Describe "Get-GroupWritebackConsolidationOperations" -Tag Mocked {
             throw [Microsoft.PowerShell.Commands.HttpResponseException]::new("Not found", [System.Net.Http.HttpResponseMessage]::new(404))
         }
 
-        $Operations = Get-GroupWritebackConsolidationOperations -Verbose -Debug -ErrorAction Continue
+        $Operations = Get-GroupWritebackReconciliationOperations -Verbose -Debug -ErrorAction Continue
         # $Operations | ConvertTo-Json | Write-Host -ForegroundColor Yellow
     }
 

@@ -2,7 +2,7 @@
 Param()
 
 Import-Module EntraIDAccessToken -Force
-Import-Module Fortytwo.IAM.GroupWritebackConsolidation -Force
+Import-Module Fortytwo.IAM.GroupWritebackReconciliation -Force
 
 # Create an access token profile
 $cs ??= Read-Host -AsSecureString -Prompt "Client secret for 55ffa0ca-c74f-4344-bf0e-af56ff30f920"
@@ -12,10 +12,10 @@ Add-EntraIDClientSecretAccessTokenProfile `
     -ClientSecret $cs
 
 # Connect the module
-Connect-GroupWritebackConsolidation
+Connect-GroupWritebackReconciliation
     
-$Operations = Get-GroupWritebackConsolidationOperations -Verbose
-$Operations | Show-GroupWritebackConsolidationOperation
+$Operations = Get-GroupWritebackReconciliationOperations -Verbose
+$Operations | Show-GroupWritebackReconciliationOperation
 
 if ($Operations.Count -eq 0) {
     Write-Host -ForegroundColor Yellow "No operations to perform."
@@ -24,4 +24,4 @@ if ($Operations.Count -eq 0) {
 
 Read-Host "Press Enter to continue..."
 
-$Operations | Complete-GroupWritebackConsolidation -Verbose
+$Operations | Complete-GroupWritebackReconciliation -Verbose
