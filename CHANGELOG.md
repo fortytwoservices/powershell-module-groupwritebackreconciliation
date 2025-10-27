@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.2.0...v0.3.0) (2025-10-27)
+
+
+### Features
+
+* Add silent parameter to Complete-GroupWritebackReconciliation ([de27a9e](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/de27a9e70d17dc2520788f8e366b80d1e6784025))
+* Add silent parameter to Complete-GroupWritebackReconciliation ([9f3a264](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/9f3a2648b53b6e13c49ba59c7542f386acc0dc02))
+
 ## [0.2.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.1.2...v0.2.0) (2025-10-27)
 
 
