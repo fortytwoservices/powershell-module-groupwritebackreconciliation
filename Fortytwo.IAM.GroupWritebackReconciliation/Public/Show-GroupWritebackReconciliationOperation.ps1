@@ -19,6 +19,7 @@ function Show-GroupWritebackReconciliationOperation {
 
     Begin {
         if (!$Single.IsPresent) {
+            $Script:PreviousGroup = $null
             Write-Host "[group]Operations report"
         }
 
@@ -26,19 +27,17 @@ function Show-GroupWritebackReconciliationOperation {
             "Add member"    = 0
             "Remove member" = 0
         }
-
-        $PreviousGroup = $null
     }
 
     Process {
         $Methods[$Operation.Action] += 1
 
-        if($PreviousGroup -ne $Operation.Group -and -not $Single.IsPresent) {
-            if ($PreviousGroup) {
+        if($Script:PreviousGroup -ne $Operation.Group) {
+            if ($Script:PreviousGroup) {
                 Write-Host ""
             }
             Write-Host "Group: $($Operation.Group)"
-            $PreviousGroup = $Operation.Group
+            $Script:PreviousGroup = $Operation.Group
         }
 
         if ($Operation.Action -eq "Add member") {
@@ -64,6 +63,7 @@ function Show-GroupWritebackReconciliationOperation {
 
                 Write-Host " - $($_.Value) x $($Color)$($_.Key)$($PSStyle.Reset)"
             }
+            $Script:PreviousGroup = $null
         }
     }
 }
