@@ -49,7 +49,7 @@ function Get-GroupWritebackConsolidationOperations {
                 Write-Verbose " - Found $($EntraIDMembers.Count) members in Entra ID group '$EntraIDGroupObjectId'."
             }
             catch {
-                Write-Error "Failed to fetch members for Entra ID group '$EntraIDGroupObjectId'. Error details: $($_.Exception.Message)" -Exception $_.Exception
+                Write-Error "Failed to fetch members for Entra ID group '$EntraIDGroupObjectId'. Error details: $($_.Exception.Message)"
                 continue
             }
 
