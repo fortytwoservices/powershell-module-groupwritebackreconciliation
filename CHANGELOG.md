@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.3.0...v0.4.0) (2025-10-27)
+
+
+### Features
+
+* Improve grouping of output for Show-GroupWritebackReconciliationOperation with Azure DevOps Pipelines and GitHub actions ([1ccfb9d](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/1ccfb9df090286e46168479bf2a393b9d61160b2))
+* Improve grouping of output for Show-GroupWritebackReconciliationOperation with Azure DevOps Pipelines and GitHub actions ([e38c869](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/e38c86985833c6badd58e56bb8192f58d06b21b2))
+
 ## [0.3.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.2.0...v0.3.0) (2025-10-27)
 
 
