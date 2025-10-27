@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/fortytwoservices/powershell-module-groupwritebackconsolidation/compare/v0.1.0...v0.1.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* Rename module. It is after all the eyes that looses the sight first... ([8d0eaf9](https://github.com/fortytwoservices/powershell-module-groupwritebackconsolidation/commit/8d0eaf94d162707e4c63d0e54516784a51e2d555))
+* Rename module. It is after all the eyes that looses the sight first... ([8562b71](https://github.com/fortytwoservices/powershell-module-groupwritebackconsolidation/commit/8562b7104a189440bac7b38e7cc977251f2032ab))
+
 ## [0.1.0](https://github.com/fortytwoservices/powershell-module-GroupWritebackReconciliation/compare/v0.0.1...v0.1.0) (2025-10-27)
 
 
