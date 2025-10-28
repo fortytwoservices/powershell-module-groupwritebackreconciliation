@@ -1,6 +1,6 @@
 BeforeAll {
     Install-Module EntraIDAccessToken -Force -Scope CurrentUser
-    Add-EntraIDExternalAccessTokenProfile -AccessToken "dummy"
+    Add-EntraIDExternalAccessTokenProfile -AccessToken "dummy" -WarningAction SilentlyContinue
     $Script:Module = Import-Module "$PSScriptRoot/../" -Force -PassThru -Global 
 
     # Mocking Active Directory module
@@ -10,9 +10,13 @@ BeforeAll {
     $MockupModule | Import-Module -Global
 }
 
+AfterAll {
+    Remove-Module -Name $Script:Module.Name -Force -ErrorAction SilentlyContinue
+}
+
 Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
     BeforeAll {
-        Connect-GroupWritebackReconciliation -SkipAllTests
+        Connect-GroupWritebackReconciliation -SkipAllTests -WarningAction SilentlyContinue
 
         # Mocking dependencies
         Mock -ModuleName $Script:Module.Name -CommandName Get-ADGroup -MockWith {
@@ -63,7 +67,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
         }
 
         Mock -ModuleName $Script:Module.Name -CommandName Invoke-RestMethod -ParameterFilter { $Uri -like "https://graph.microsoft.com/*/groups/bbbbbbbb-cccc-dddd-eeee-ffffffffffff/members*" } -MockWith {
-            Write-Warning "Mocked Invoke-RestMethod called with URI: $($Uri)"
+            Write-Debug "Mocked Invoke-RestMethod called with URI: $($Uri)"
             return @{value = @(
                     [PSCustomObject]@{ 
                         id                          = "38327624-a675-414d-ab8d-a4e25205cc8f"
@@ -74,7 +78,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
         }
 
         Mock -ModuleName $Script:Module.Name -CommandName Invoke-RestMethod -ParameterFilter { $Uri -like "https://graph.microsoft.com/*/groups/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/members*" } -MockWith {
-            Write-Warning "Mocked Invoke-RestMethod called with URI: $($Uri)"
+            Write-Debug "Mocked Invoke-RestMethod called with URI: $($Uri)"
             return @{value = @(
                     [PSCustomObject]@{ 
                         id                          = "38327624-a675-414d-ab8d-a4e25205cc8f"
@@ -85,7 +89,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
         }
 
         Mock -ModuleName $Script:Module.Name -CommandName Invoke-RestMethod -ParameterFilter { $Uri -like "https://graph.microsoft.com/*/groups/cccccccc-dddd-eeee-ffff-000000000000/members*" } -MockWith {
-            Write-Warning "Mocked Invoke-RestMethod called with URI: $($Uri)"
+            Write-Debug "Mocked Invoke-RestMethod called with URI: $($Uri)"
             return @{value = @(
                     [PSCustomObject]@{ 
                         id                          = "38327624-a675-414d-ab8d-a4e25205cc8f"
@@ -101,11 +105,11 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
         }
 
         Mock -ModuleName $Script:Module.Name -CommandName Invoke-RestMethod -ParameterFilter { $Uri -like "https://graph.microsoft.com/*/groups/dddddddd-eeee-ffff-0000-111111111111/members*" } -MockWith {
-            Write-Warning "Mocked Invoke-RestMethod called with URI: $($Uri)"
+            Write-Debug "Mocked Invoke-RestMethod called with URI: $($Uri)"
             throw [Microsoft.PowerShell.Commands.HttpResponseException]::new("Not found", [System.Net.Http.HttpResponseMessage]::new(404))
         }
 
-        $Operations = Get-GroupWritebackReconciliationOperations -Verbose -Debug -ErrorAction Continue
+        $Operations = Get-GroupWritebackReconciliationOperations -ErrorAction SilentlyContinue
         # $Operations | ConvertTo-Json | Write-Host -ForegroundColor Yellow
     }
 
