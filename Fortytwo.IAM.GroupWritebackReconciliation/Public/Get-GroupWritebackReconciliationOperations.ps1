@@ -13,7 +13,7 @@ function Get-GroupWritebackReconciliationOperations {
         Write-Verbose "Building cache of all AD groups by ObjectSID."
         $AllADGroups = @{}
         Get-ADGroup -Filter * | Foreach-object {
-            $AllADGroups[$_.ObjectSID.ToString()] = $_
+            $AllADGroups[$_.SID.Value] = $_
         }
 
         $ADGroups = Get-ADGroup -Filter $Script:ADGroupFilter -Properties member, adminDescription
