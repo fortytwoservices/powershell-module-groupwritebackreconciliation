@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.1](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.6.0...v0.6.1) (2025-10-29)
+
+
+### Bug Fixes
+
+* Still wrong SID... ([f7abf45](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/f7abf45f0cd0ab024da8bc8858d277791887709a))
+* Wrong sid location for groups causing issues ([ee4c13b](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/ee4c13b5abe5aa6316cec617161d98d2c39ee0a0))
+* Wrong sid location for groups causing issues ([298024d](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/298024db640e05d066beac9bc7193ab4bada279e))
+
 ## [0.6.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.5.0...v0.6.0) (2025-10-29)
 
 
