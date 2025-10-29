@@ -33,7 +33,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     )
                     AdminDescription  = "TakenOver_Group_bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
                     ObjectGUID        = "1404be73-01c6-4801-9fce-4ad11a7284a3"
-                    ObjectSID         = @{value="S-1-5-21-1004336348-1177238915-682003330-512"}
+                    SID         = @{value="S-1-5-21-1004336348-1177238915-682003330-512"}
                 }
                 
                 [PSCustomObject]@{ 
@@ -45,7 +45,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     )
                     AdminDescription  = "TakenOver_Group_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
                     ObjectGUID        = "bce7f444-fc13-4755-b877-608cf5e635a2"
-                    ObjectSID         = @{value="S-1-5-21-1004336348-1177238915-682003330-513"}
+                    SID         = @{value="S-1-5-21-1004336348-1177238915-682003330-513"}
                 }
                 
                 [PSCustomObject]@{ 
@@ -55,7 +55,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     Member            = @()
                     AdminDescription  = "TakenOver_Group_cccccccc-dddd-eeee-ffff-000000000000"
                     ObjectGUID        = "d4f5e6a7-b8c9-40d1-92e3-4567890abcde"
-                    ObjectSID         = @{value="S-1-5-21-1004336348-1177238915-682003330-514"}
+                    SID         = @{value="S-1-5-21-1004336348-1177238915-682003330-514"}
                 }
                 
                 [PSCustomObject]@{ 
@@ -67,7 +67,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     )
                     AdminDescription  = "Group_dddddddd-eeee-ffff-0000-111111111111"
                     ObjectGUID        = "e5f6a7b8-c9d0-41e2-93f4-567890abcdef"
-                    ObjectSID         = @{value="S-1-5-21-1004336348-1177238915-682003330-515"}
+                    SID         = @{value="S-1-5-21-1004336348-1177238915-682003330-515"}
                 }
                 
                 [PSCustomObject]@{ 
@@ -79,7 +79,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     )
                     AdminDescription  = $null
                     ObjectGUID        = "c474c2d2-32fe-4e67-8842-343fd99c0954"
-                    ObjectSID         = @{value="S-1-5-21-1004336348-1177238915-682003330-516"}
+                    SID         = @{value="S-1-5-21-1004336348-1177238915-682003330-516"}
                 }
             )
         
