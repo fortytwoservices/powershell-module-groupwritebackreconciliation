@@ -27,7 +27,7 @@ function Connect-GroupWritebackReconciliation {
         [Switch] $SkipAllTests,
 
         [Parameter(Mandatory = $false)]
-        [ScriptBlock] $ADGroupFilter = { adminDescription -like "TakenOver_Group_*" }
+        [ScriptBlock] $ADGroupFilter = { adminDescription -like "TakenOver_Group_*" -or adminDescription -like "Group_*"}
     )
 
     Process {
