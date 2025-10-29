@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.5.0...v0.6.0) (2025-10-29)
+
+
+### Features
+
+* Add support for group being members of groups ([f94f95c](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/f94f95cdf2b8e68d40db97cb7f1ac789109bb9e8))
+* Add support for group being members of groups ([a339a10](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/a339a10ae7b1d6c152e9520560a2dca58001f17f))
+
 ## [0.5.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.4.2...v0.5.0) (2025-10-29)
 
 
