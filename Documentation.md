@@ -4,7 +4,7 @@ A module for group writeback consolidation in Entra ID.
 
 | Metadata | Information |
 | --- | --- |
-| Version | 0.5.0 |
+| Version | 0.6.0 |
 | Required modules | EntraIDAccessToken |
 | Author | Marius Solbakken Mellum |
 | Company name | Fortytwo Technologies AS |
