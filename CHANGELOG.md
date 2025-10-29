@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.4.2...v0.5.0) (2025-10-29)
+
+
+### Features
+
+* Add support for writeback groups that never came from AD ([583a273](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/583a273e7c7a627b8312c391bd6ac3ddf80b9726))
+* Add support for writeback groups that never came from AD ([8ef99c6](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/8ef99c6a437374028b8ab355aee33caa3289dcaf))
+
 ## [0.4.2](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.4.1...v0.4.2) (2025-10-27)
 
 
