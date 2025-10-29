@@ -3,47 +3,88 @@ function Get-GroupWritebackReconciliationOperations {
 
     Param(
         [Parameter(Mandatory = $false)]
-        [Switch] $DoNotWarnIfMissingOnPremDN
+        [Switch] $DoNotWarnIfMissingOnPremDN,
+
+        [Parameter(Mandatory = $false)]
+        [Switch] $DisableCacheForADGroupObjectSIDLookup
     )
 
     Process {
-        $ADGroups = Get-ADGroup -Filter $Script:ADGroupFilter -Properties member, adminDescription
-
-        if (!$ADGroups) {
-            Write-Error "No on-premises AD groups matching the filter."
-            return @()
+        Write-Verbose "Building cache of all AD groups by ObjectSID."
+        $AllADGroups = @{}
+        Get-ADGroup -Filter * | Foreach-object {
+            $AllADGroups[$_.ObjectSID.ToString()] = $_
         }
+
+        $ADGroups = Get-ADGroup -Filter $Script:ADGroupFilter -Properties member, adminDescription
         
-        foreach ($ADGroup in $ADGroups) {
-            Write-Verbose "Processing group '$($ADGroup.Name)' with objectguid '$($ADGroup.ObjectGUID)'."
-            
+        $ADGroupsByAdminDescription = @{}
+        $ADGroups | ForEach-Object {
             if (
-                $ADGroup.adminDescription -notmatch "^TakenOver_Group_[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$" -and    
-                $ADGroup.adminDescription -notmatch "^Group_[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+                $_.adminDescription -notmatch "^TakenOver_Group_[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$" -and    
+                $_.adminDescription -notmatch "^Group_[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
             ) {
-                Write-Warning "Group '$($ADGroup.Name)' does not have a valid adminDescription. Skipping group."
+                Write-Warning "Group '$($_.Name)' does not have a valid adminDescription. Skipping group."
                 continue
             }
 
-            $EntraIDGroupObjectId = $ADGroup.adminDescription -replace "^TakenOver_Group_" -replace "^Group_"
+            $ADGroupsByAdminDescription[($_.adminDescription -replace "^TakenOver_Group_" -replace "^Group_")] = $_
+        }
 
+        if (!$ADGroupsByAdminDescription) {
+            Write-Error "No valid on-premises AD groups matching the filter."
+            return @()
+        }
+        
+        $ADGroupsByAdminDescription.GetEnumerator() | ForEach-Object {
+            $ADGroup = $_.Value
+            $EntraIDGroupObjectId = $_.Key
+
+            Write-Verbose "Processing group '$($ADGroup.Name)' with objectguid '$($ADGroup.ObjectGUID)'."
+            
             Write-Verbose " - Fetching Entra ID group members for group '$EntraIDGroupObjectId'."
             $EntraIDMembers = @{}
-            $uri = "https://graph.microsoft.com/v1.0/groups/$EntraIDGroupObjectId/members?`$select=id,onPremisesDistinguishedName&`$top=999"
+            $uri = "https://graph.microsoft.com/v1.0/groups/$EntraIDGroupObjectId/members?`$select=id,onPremisesDistinguishedName,onPremisesDomainName,onPremisesSamAccountName,onPremisesSecurityIdentifier&`$top=999"
             
             try {
                 do {
                     $Response = Invoke-RestMethod -Uri $Uri -Method Get -Headers (Get-EntraIDAccessTokenHeader -Profile $Script:AccessTokenProfile)
                     if ($Response.value) {
                         foreach ($Member in $Response.value) {
-                            if ($Member.onPremisesDistinguishedName) {
-                                $EntraIDMembers[$Member.onPremisesDistinguishedName] = $Member
-                            }
-                            else {
-                                if (!$DoNotWarnIfMissingOnPremDN.IsPresent) {
-                                    Write-Warning "Member with ID '$($Member.id)' in group '$EntraIDGroupObjectId' does not have an onPremisesDistinguishedName. Skipping member."
+                            Write-Debug "Processing member with ID '$($Member.id)' of type '$($Member.'@odata.type')' in group '$EntraIDGroupObjectId'."
+                            if($Member.'@odata.type' -eq "#microsoft.graph.user") {
+                                if ($Member.onPremisesDistinguishedName) {
+                                    $EntraIDMembers[$Member.onPremisesDistinguishedName] = $Member
                                 }
-                            }                        
+                                else {
+                                    if (!$DoNotWarnIfMissingOnPremDN.IsPresent) {
+                                        Write-Warning "Member with ID '$($Member.id)' in group '$EntraIDGroupObjectId' does not have an onPremisesDistinguishedName. Skipping member."
+                                    }
+                                }
+                            } elseif($Member.'@odata.type' -eq "#microsoft.graph.group") {
+                                $Handled = $false
+                                if(![string]::IsNullOrEmpty($Member.onPremisesSecurityIdentifier)) {
+                                    if($AllADGroups.ContainsKey($Member.onPremisesSecurityIdentifier)) {
+                                        Write-Debug "Resolved on-premises group member with ID '$($Member.id)' in group '$EntraIDGroupObjectId' via onPremisesSecurityIdentifier."
+                                        $Handled = $true
+                                        $EntraIDMembers[$AllADGroups[$Member.onPremisesSecurityIdentifier].DistinguishedName] = $Member
+                                    }
+                                }
+
+                                if(!$Handled) {
+                                    if($ADGroupsByAdminDescription.ContainsKey($Member.Id)) {
+                                        Write-Debug "Resolved on-premises group member with ID '$($Member.id)' in group '$EntraIDGroupObjectId' via adminDescription."
+                                        $Handled = $true
+                                        $EntraIDMembers[$ADGroupsByAdminDescription[$Member.Id].DistinguishedName] = $Member
+                                    }
+                                }
+
+                                if(!$Handled) {
+                                    Write-Warning "Member with ID '$($Member.id)' in group '$EntraIDGroupObjectId' is an on-premises group that we are unable to handle. Skipping member."
+                                }
+                            } else {
+                                Write-Warning "Member with ID '$($Member.id)' in group '$EntraIDGroupObjectId' is of unsupported type '$($Member.'@odata.type')'."
+                            }
                         }
                     }
                     $Uri = $Response.'@odata.nextLink'
@@ -52,8 +93,8 @@ function Get-GroupWritebackReconciliationOperations {
                 Write-Verbose " - Found $($EntraIDMembers.Count) members in Entra ID group '$EntraIDGroupObjectId'."
             }
             catch {
-                Write-Error "Failed to fetch members for Entra ID group '$EntraIDGroupObjectId'. Error details: $($_.Exception.Message)"
-                continue
+                Write-Warning "Failed to fetch members for Entra ID group '$EntraIDGroupObjectId'. Error details: $($_.Exception.Message)"
+                return
             }
 
             # Compare members
