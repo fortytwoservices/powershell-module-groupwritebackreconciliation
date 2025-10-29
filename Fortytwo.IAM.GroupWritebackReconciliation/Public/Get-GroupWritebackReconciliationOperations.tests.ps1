@@ -60,7 +60,7 @@ Describe "Get-GroupWritebackReconciliationOperations" -Tag Mocked {
                     Member            = @(
                         "CN=John Smith,OU=Users,DC=example,DC=com"
                     )
-                    AdminDescription  = "TakenOver_Group_dddddddd-eeee-ffff-0000-111111111111"
+                    AdminDescription  = "Group_dddddddd-eeee-ffff-0000-111111111111"
                     ObjectGUID        = "e5f6a7b8-c9d0-41e2-93f4-567890abcdef"
                 }
             )
