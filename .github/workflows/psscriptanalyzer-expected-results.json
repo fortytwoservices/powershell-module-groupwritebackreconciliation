@@ -1,0 +1,17 @@
+[
+    {
+        "RuleName": "PSUseOutputTypeCorrectly",
+        "ScriptName": "Get-GroupWritebackReconciliationOperations.ps1",
+        "Line": 36
+    },
+    {
+        "RuleName": "PSUseSingularNouns",
+        "ScriptName": "Get-GroupWritebackReconciliationOperations.ps1",
+        "Line": 1
+    },
+    {
+        "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+        "ScriptName": "New-GroupWritebackReconciliationOperation.ps1",
+        "Line": 1
+    }
+]

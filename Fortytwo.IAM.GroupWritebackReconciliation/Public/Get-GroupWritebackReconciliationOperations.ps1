@@ -3,10 +3,7 @@ function Get-GroupWritebackReconciliationOperations {
 
     Param(
         [Parameter(Mandatory = $false)]
-        [Switch] $DoNotWarnIfMissingOnPremDN,
-
-        [Parameter(Mandatory = $false)]
-        [Switch] $DisableCacheForADGroupObjectSIDLookup
+        [Switch] $DoNotWarnIfMissingOnPremDN
     )
 
     Process {
