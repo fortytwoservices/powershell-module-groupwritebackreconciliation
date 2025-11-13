@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.6.1...v0.7.0) (2025-11-13)
+
+
+### Features
+
+* Fix psscriptanalyzer issues ([e4567bf](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/e4567bf9fb9daae8cee59da22bef3d9e72eb213f))
+
 ## [0.6.1](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.6.0...v0.6.1) (2025-10-29)
 
 
