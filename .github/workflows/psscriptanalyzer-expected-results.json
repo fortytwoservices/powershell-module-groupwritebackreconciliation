@@ -2,7 +2,7 @@
     {
         "RuleName": "PSUseOutputTypeCorrectly",
         "ScriptName": "Get-GroupWritebackReconciliationOperations.ps1",
-        "Line": 36
+        "Line": 33
     },
     {
         "RuleName": "PSUseSingularNouns",
