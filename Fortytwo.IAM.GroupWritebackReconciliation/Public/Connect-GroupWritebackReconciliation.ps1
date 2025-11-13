@@ -1,4 +1,4 @@
-<#
+﻿<#
 .DESCRIPTION
     Connects the Connect-GroupWritebackReconciliation module to Entra ID and Active Directory.
 

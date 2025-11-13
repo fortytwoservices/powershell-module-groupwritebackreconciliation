@@ -4,7 +4,7 @@ A module for group writeback consolidation in Entra ID.
 
 | Metadata | Information |
 | --- | --- |
-| Version | 0.6.0 |
+| Version | 0.6.1 |
 | Required modules | EntraIDAccessToken |
 | Author | Marius Solbakken Mellum |
 | Company name | Fortytwo Technologies AS |
@@ -203,8 +203,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### SYNTAX
 
 ```
-Get-GroupWritebackReconciliationOperations [-DoNotWarnIfMissingOnPremDN]
- [-DisableCacheForADGroupObjectSIDLookup] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-GroupWritebackReconciliationOperations [-DoNotWarnIfMissingOnPremDN] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### DESCRIPTION
@@ -220,21 +220,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ### PARAMETERS
-
-#### -DisableCacheForADGroupObjectSIDLookup
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 #### -DoNotWarnIfMissingOnPremDN
 
