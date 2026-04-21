@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.7.0...v0.8.0) (2026-04-21)
+
+
+### Features
+
+* Invoke a release in order to verify updated release please configuration ([bb66040](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/bb660406a02dc5537c8e68cb980826a9511e2ef5))
+* Release ([f41cdaf](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/commit/f41cdaf3965dc3700800dd882a07ba9a2a611e38))
+
 ## [0.7.0](https://github.com/fortytwoservices/powershell-module-groupwritebackreconciliation/compare/v0.6.1...v0.7.0) (2025-11-13)
 
 
